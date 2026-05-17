@@ -1,0 +1,1976 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<link rel="stylesheet" href="testsheet.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>Peppi</title>
+
+<script>
+function openPopup(){
+  document.getElementById("popup").style.display = "flex";
+}
+
+function closePopup(){
+  document.getElementById("popup").style.display = "none";
+}
+</script>
+
+<script>
+function toggleSection(header){
+  const content = header.nextElementSibling;
+  content.style.display =
+    content.style.display === "none" ? "block" : "none";
+}
+</script>
+
+<script>
+function openCourse(id){
+
+  const course = courses.find(c => c.id === id);
+
+  if(!course) return;
+
+  document.getElementById("courseTitle").textContent = course.name;
+  document.getElementById("courseLang").textContent = course.language;
+  document.getElementById("courseGoals").textContent = course.goals;
+  document.getElementById("courseContent").textContent = course.content;
+document.getElementById("courseEsitieto").textContent = course.esitieto;
+  document.getElementById("coursePopup").style.display = "flex";
+}
+
+function closeCourse(){
+  document.getElementById("coursePopup").style.display = "none";
+  
+}
+window.onclick = function(e){
+  const popup = document.getElementById("coursePopup");
+  if(e.target === popup){
+    popup.style.display = "none";
+  }
+}
+</script>
+
+<script>
+let courses = [];
+
+// load JSON once
+fetch("courses.json")
+  .then(res => res.json())
+  .then(data => {
+    courses = data;
+  });
+</script>
+
+</head>
+
+<body>
+
+<div class="topnav">
+	<div class="nav-left">
+		
+	<div class="hattutausta">
+ 		<i class="fa fa-graduation-cap" style="font-size: 30px;color: white;"></i>
+	</div>
+
+  <a href="index.html" style="gap: 6px; display: flex;align-items: center;"><i class="fa fa-home active" style="font-size: 20px;color: #3b56a3;"></i><span>ETUSIVU</span></a>
+
+  <div class="dropdown">
+    <button class="dropbtn" onclick="goToFirst('opinnot')"><i class="fa fa-cube " id="icon"style="font-size: 18px;"></i><span>OPINTONI</span><I class="fa fa-caret-down"></I></button>
+    <div class="dropdown-content" id="opinnot">
+      <a href="hops.html">Opintosuunnittelu (eHOPS)</a>
+      <a href="#">Opintosuoritukset</a>
+      <a href="ilmoitus.html">Ilmoittautuminen lukuvuodelle</a>
+      <a href="https://opetussuunnitelmat.peppi.jamk.fi/" target="_blank">Opetussuunnitelmat</a>
+      <a href="https://opintohaku.jamk.fi/" target="_blank">Opintohaku</a>
+      <a href="palaute.html">Opintojaksopalaute</a>
+    </div>
+  </div>
+
+  <div class="dropdown">
+    <button class="dropbtn" onclick="goToFirst('kalenteri')"><i class="fa fa-calendar" id="icon" style="font-size: 18px;"></i> <span>KALENTERI</span><I class="fa fa-caret-down"></I></button>
+    <div class="dropdown-content" id="kalenteri">
+        <a href="varaus.html">Tilavaraukset</a>
+        <a href="tapaamist.html">Tapaamisajat</a>
+        <a href="asetukset.html">Asetukset</a>
+    </div>
+  </div>
+    <div class="dropdown"onclick="goToFirst('asiointi')">
+    <button class="dropbtn" id="asiointi"><I class="fa fa-download " id="icon" style="font-size: 18px;"></I><span>SÄHKÖINEN ASIOINTI</span><I class="fa fa-caret-down"></I></button>
+    <div class="dropdown-content">
+        <a href="atomi.html">Atomi</a>
+        <a href="https://www.jamk.fi/en/for-students/online-services" target="_blank">Sähköinen asiointi</a>
+    </div>
+  </div>
+    <div class="dropdown" onclick="goToFirst('eahot')">
+    <button class="dropbtn" id="eahot"><span>EAHOT HYVÄKSILUKEMINEN</span><I class="fa fa-caret-down"></I></button>
+    <div class="dropdown-content">
+        <a href="luku.html">eAHOT-hyväksilukeminen</a>
+        <a href="lukupankki.html">Hyväksilukupankki</a>
+        <a href="liitepankki.html">Liitepankki</a>
+    </div>
+    </div>
+<a href="https://help.jamk.fi/peppi/fi/" target="_blank" style="gap: 6px; display: flex;align-items: center;"><i class="fa fa-book " id="icon" style="font-size: 18px;"></i><span>OHJEET</span></a>
+
+
+
+</div>
+<div class="nav-right">
+  <i class="fa fa-bell" onclick="openPopup()"></i>
+
+  <div class="dropdown">
+    <button class="dropbtn" >FI<I class="fa fa-caret-down"></I></button>
+    <div class="dropdown-content" style="gap: 6px;">
+        <a href="#"><i class="fa fa-language" id="icon"></i><span>In English</span></a>
+    </div>
+  </div>
+<img class="pfp" src="avatar.png" alt="Sisu Tiihonen" style="max-height: 30px;">
+  <div class="dropdown">
+    <button class="dropbtn" >Sisu Tiihonen<I class="fa fa-caret-down"></I></button>
+    <div class="dropdown-content" style="gap: 6px;">
+        <a href="#"><i class="fa fa-sign-out"></i><span>Kirjaudu Ulos</span></a>
+    </div>
+  </div>
+</div>
+</div>
+
+<div>
+	<img src="hopsyla.png">
+</div>
+
+<div class="keskiarvo">
+	<p><b>Keskiarvo:</b> 3,63</p>
+	<p><B>Opintopisteitä yhteensä:</B> 39</p>
+</div>
+
+<div class="table">
+
+  <!-- SECTION -->
+  <div class="section">
+
+<div class="section-header">
+  <div></div>
+  <div>OPISKELU- JA TYÖHYVINVOINTI</div>
+
+  <!-- spans points + grade -->
+  <div class="header-points">Laajuus: (0) 32 - 50 / 5 - 45 op</div>	
+</div>
+
+    <div class="section-content">
+
+		<div class="row optional ongoing"
+			onclick="openCourse('ZZPP0520')">
+  			<div class="icons">
+    		<span class="req"></span>
+    		<span class="status"></span>
+			</div>
+  		<div class="name">Osaajana kehittyminen</div>
+  		<div class="points">5 op</div>
+		 <div class="grade"></div>
+  		</div>
+		<div class="row optional new"
+			onclick="openCourse('SZZZ1910')">
+  			<div class="icons">
+    		<span class="req"></span>
+    		<span class="status"></span>
+			</div>
+  		<div class="name">Opiskelijan hyvinvointi ja elämäntaidot</div>
+  		<div class="points">2 op</div>
+		 <div class="grade"></div>
+  		</div>
+		<div class="row optional new"
+			onclick="openCourse('SZZ30500')">
+  			<div class="icons">
+    		<span class="req"></span>
+    		<span class="status"></span>
+			</div>
+  		<div class="name">Life balance - tasapainoa elämään</div>
+  		<div class="points">5 op</div>
+		 <div class="grade"></div>
+  		</div>
+		<div class="row optional completed"
+			onclick="openCourse('BI00BB51')">
+  			<div class="icons">
+    		<span class="req"></span>
+    		<span class="status"></span>
+			</div>
+  		<div class="name">Sujuvuutta opiskeluun, opiskelukirjoittaminen</div>
+  		<div class="points">2 op</div>
+		 <div class="grade"></div>
+  		</div>
+		<div class="row optional completed"
+			onclick="openCourse('BI00BB52')">
+  			<div class="icons">
+    		<span class="req"></span>
+    		<span class="status"></span>
+			</div>
+  		<div class="name">Sujuvuutta opiskeluun, opiskelutekniikat </div>
+  		<div class="points">2 op</div>
+		 <div class="grade"></div>
+  		</div>
+		<div class="row optional completed"
+			onclick="openCourse('BI00BB50')">
+  			<div class="icons">
+    		<span class="req"></span>
+    		<span class="status"></span>
+			</div>
+  		<div class="name">Sujuvuutta opiskeluun, kielenhuollon kertaus </div>
+  		<div class="points">1 op</div>
+		 <div class="grade"></div>
+  		</div>
+		<div class="row optional new"
+     onclick="openCourse('zz00bm06')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">ZZ00BM06 Opiskelijatutorointi</div>
+
+  <div class="points">1 - 5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row optional new"
+     onclick="openCourse('zz00bm07')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">ZZ00BM07 Monimuototutorointi</div>
+
+  <div class="points">1 - 5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row optional new"
+     onclick="openCourse('zzaj0400')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">ZZAJ0400 Mentorointi</div>
+
+  <div class="points">3 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row optional new"
+     onclick="openCourse('zzej0100')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">ZZEJ0100 Löydä oma liikuntamuotosi</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row optional new"
+     onclick="openCourse('zzaj0100')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">ZZAJ0100 Opiskelija aktiivina JAMKissa</div>
+
+  <div class="points">5 - 15 op</div>
+
+  <div class="grade"></div>
+
+</div>
+</div>
+<div class="section-header">
+  <div></div>
+  <div>KIELET JA VEISTINTÄ</div>
+
+  <!-- spans points + grade -->
+  <div class="header-points">Laajuus: (0) 11 / 11 op</div>
+</div>
+<div class="section-content">
+<div class="row mandatory new"
+     onclick="openCourse('zzpc0220')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">ZZPC0220 Työelämän englanti</div>
+
+  <div class="points">4 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('zzpc0320')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">ZZPC0320 Työelämän ruotsi</div>
+
+  <div class="points">4 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('zzpc0420')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">ZZPC0420 Työelämän viestintä</div>
+
+  <div class="points">3 op</div>
+
+  <div class="grade"></div>
+
+</div>
+</div>
+
+<div class="section-header">
+  <div></div>
+  <div>FUTURE FACTORY</div>
+
+  <!-- spans points + grade -->
+  <div class="header-points">Laajuus: (0) 15 / 15 op</div>
+</div>
+<div class="section-content">
+<div class="row optional new"
+     onclick="openCourse('zzpp0750')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">ZZPP0750 Yrittäjyys</div>
+
+  <div class="points">3 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row optional new"
+     onclick="openCourse('zzpp0740')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">ZZPP0740 JAMK InnoFlash</div>
+
+  <div class="points">2 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('zzpp0920')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">ZZPP0920 Future Factory -projekti</div>
+
+  <div class="points">10 op</div>
+
+  <div class="grade"></div>
+
+</div>
+</div>
+<div class="section-header">
+  <div></div>
+  <div>MATEMATIIKAN JA FYSIIKAN PERUSTEET INSINÖÖRILLE</div>
+
+  <!-- spans points + grade -->
+  <div class="header-points">Laajuus: (0) 15 / 15 op</div>
+</div>
+<div class="section-content">
+<div class="row mandatory new"
+     onclick="openCourse('TZLM1300')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">Mat 1</div>
+
+  <div class="points"></div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('tzlm2300')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TZLM2300 Mat2 Funktiot</div>
+
+  <div class="points">3 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('tzlm3300')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TZLM3300 Mat3 Derivaatta ja integraali</div>
+
+  <div class="points">3 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('tzlf1300')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TZLF1300 Fys1 Voima ja liike</div>
+
+  <div class="points">3 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('tzlf2300')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TZLF2300 Fys2 Energia</div>
+
+  <div class="points">3 op</div>
+
+  <div class="grade"></div>
+
+</div>
+</div>
+
+<div class="section-header">
+  <div></div>
+  <div>MATEMATIIKAN JA LUONNONTIETEIDEN SOVELTAMINEN TIETO- JA VEISTINTÄTEKNSIIKASSSA</div>
+
+  <!-- spans points + grade -->
+  <div class="header-points">Laajuus: (0) 24 / 15 op</div>
+</div>
+
+<div class="section-content">
+
+<div class="row mandatory new"
+     onclick="openCourse('tzlf8010')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TZLF8010 Fys3 - Sähkömagnetismi ja aalto-oppi</div>
+
+  <div class="points">4 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('tzlf8020')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TZLF8020 Fys4 - Laboraatiot</div>
+
+  <div class="points">2 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('tzlm4300')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TZLM4300 Mat4 Diskreetti matematiikka</div>
+
+  <div class="points">3 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row optional new"
+     onclick="openCourse('tzlm7020')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TZLM7020 Sovellettu matematiikka: Kryptologia</div>
+
+  <div class="points">3 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row optional new"
+     onclick="openCourse('tzlm7030')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TZLM7030 Sovellettu matematiikka: Optimointi ja verkkomallit</div>
+
+  <div class="points">3 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row optional new"
+     onclick="openCourse('tzlm7040')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TZLM7040 Sovellettu matematiikka: Todennäköisyyslaskenta</div>
+
+  <div class="points">3 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row optional new"
+     onclick="openCourse('tzlm7050')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TZLM7050 Sovellettu matematiikka: Vektorit ja matriisit</div>
+
+  <div class="points">3 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row optional new"
+     onclick="openCourse('tz00bs14')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TZ00BS14 Sovellettu matematiikka</div>
+
+  <div class="points">3 op</div>
+
+  <div class="grade"></div>
+
+</div>
+  </div>
+
+<div class="section-header">
+  <div></div>
+  <div>TUKIOPINNOT</div>
+
+  <!-- spans points + grade -->
+  <div class="header-points">Laajuus: (0) 18 / 15 op</div>
+</div>
+<div class="section-content">
+<div class="row mandatory new"
+     onclick="openCourse('tzmv0300')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+
+  <div class="name">TZMV0300 Matematiikkaan valmistavat opinnot</div>
+
+  <div class="points">3 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('tzmv1100')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TZMV1100 Mat1 Tukiopinnot</div>
+
+  <div class="points">1 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('tzmv2100')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TZMV2100 Mat2 Tukiopinnot</div>
+
+  <div class="points">1 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('tzmv3100')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TZMV3100 Mat3 Tukiopinnot</div>
+
+  <div class="points">1 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttzw0410')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTZW0410 Git-versionhallinta ja GitLab-projektien hallintaympäristö</div>
+
+  <div class="points">1 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('tzto0010')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TZTO0010 Ohjelmoinnin tukiopinnot</div>
+
+  <div class="points">1 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttos0100')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTOS0100 Ohjelmistosuunnittelu ja testaus</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('iwzv0300')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">IWZV0300 Uudet teknologiat ja työn tulevaisuus</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+</div>
+<div class="section-header">
+  <div></div>
+  <div>TTV YHTEISET, TIETOTEKNIKKA</div>
+
+  <!-- spans points + grade -->
+  <div class="header-points">Laajuus: (5) 28 / 28 op</div>
+</div>
+
+<div class="section-content">
+
+<div class="row mandatory new"
+     onclick="openCourse('zzpp0420')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">ZZPP0420 ICT-valmiudet</div>
+
+  <div class="points">3 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc1010')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC1010 IT-palvelualustat</div>
+
+  <div class="points">3 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc1020')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC1020 Kyberturvallisuus</div>
+
+  <div class="points">4 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc1030')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC1030 Tietoverkot</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc1040')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC1040 Linuxin käyttö ja hallinta</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade">4</div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc1050')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC1050 Tietorakenteet ja algoritmit</div>
+
+  <div class="points">3 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc1060')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC1060 Digitaalitekniikka ja laitetekniikka</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+</div>
+
+<div class="section-header">
+  <div></div>
+  <div>TTV YHTEISET, OHJELMISTOTEKNIIKKA</div>
+
+  <!-- spans points + grade -->
+  <div class="header-points">Laajuus: (13) 31 / 31 op</div>
+</div>
+
+<div class="section-content">
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc2010')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC2010 Web-tekniikat</div>
+
+  <div class="points">4 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc2020')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC2020 Tietokannat</div>
+
+  <div class="points">4 op</div>
+
+  <div class="grade"></div>
+
+</div>
+<div class="row mandatory new"
+     onclick="openCourse('ttc2030')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC2030 Ohjelmoinnin perusteet</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc2040')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC2040 Johdanto IoT-järjestelmiin</div>
+
+  <div class="points">3 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc2050')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC2050 Johdatus data-analytiikkaan ja tekoälyyn</div>
+
+  <div class="points">3 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc2060')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC2060 Skriptaamisen ja automatisoinnin perusteet</div>
+
+  <div class="points">3 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc2070')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC2070 Projektitoiminta ja käytänteet</div>
+
+  <div class="points">4 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc2080')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC2080 Full Stack -ohjelmointi</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+</div>
+
+<div class="section-header">
+  <div></div>
+  <div>KONESALIT JA PILVIPALVELUT</div>
+
+  <!-- spans points + grade -->
+  <div class="header-points">Laajuus: (0) 30 / 30 op</div>
+</div>
+
+<div class="section-content">
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc4010')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC4010 Konesalien infrastruktuuritekniikat</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc4020')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC4020 Palvelinten ja konttien virtualisointi</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc4030')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC4030 Konesalien ja palveluiden hallinta</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc4040')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC4040 Pilviarkkitehtuurit ja -alustat</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc4050')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC4050 Automatisointi ja orkesterointi</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc4060')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC4060 Konesaliverkot</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+</div>
+
+<div class="section-header">
+  <div></div>
+  <div>TIETOVERKOT</div>
+
+  <!-- spans points + grade -->
+  <div class="header-points">Laajuus: (0) 30 / 30 op</div>
+</div>
+
+<div class="section-content">
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc5010')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC5010 Verkkojen automatisointi</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc5020')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC5020 Lähiverkot</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc5030')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC5030 Runkoverkot</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc5040')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC5040 Tietoverkkoprojekti</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc5050')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC5050 Konesaliverkot</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc5060')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC5060 Liityntäverkot</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc5510')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+
+  <div class="name">TTC5510 Windows domain administrointi</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="section-header">
+  <div></div>
+  <div>JÄREJESTELMIEN YLLÄPITO</div>
+
+  <!-- spans points + grade -->
+  <div class="header-points">Laajuus: (0) 30 / 30 op</div>
+</div>
+
+<div class="section-content">
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc5520')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC5520 Windows infrastruktuuri administrointi</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc5530')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC5530 Linux infrastruktuuripalvelut</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc5540')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC5540 Palvelualustat</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc5550')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC5550 Skaalautuvuus ja high availability</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc5560')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC5560 Palveluiden hallinta ja valvonta</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+</div>
+
+<div class="section-header">
+  <div></div>
+  <div>KYBERPUOLUSTUS</div>
+
+  <!-- spans points + grade -->
+  <div class="header-points">Laajuus: (0) 30 / 30 op</div>
+</div>
+
+<div class="section-content">
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc6010')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC6010 Tietoturvakontrollit</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc6020')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC6020 Kyberturvallisuuden hallinta</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc6030')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC6030 Kyberuhkatieto ja data-analytiikka</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc6040')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC6040 Hyökkäykset ja puolustusmenetelmät sekä suojaaminen</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc6050')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC6050 Koventaminen</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc6060')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC6060 Poikkeamien hallinta ja kyberturvakeskukset</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+  </div>
+
+<div class="section-header">
+  <div></div>
+  <div>EETTINEN HAKKEROINTI</div>
+
+  <!-- spans points + grade -->
+  <div class="header-points">Laajuus: (0) 30 / 0 - 30 op</div>
+</div>
+
+<div class="section-content">
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc6500')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC6500 Web-sovellusten turvallisuus</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc6510')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC6510 Takaisinmallintaminen</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc6520')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC6520 Ohjelmistohaavoittuvuudet ja niiden hyväksikäyttö</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc6530')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC6530 CTF-haaste</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc6550')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC6550 Auditointi, Penetraatiotestaus ja Red Team -toiminta</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+  </div>
+</div>
+
+<div class="section-header">
+  <div></div>
+  <div>KYBERTURVALLISUUSHARJOITUS</div>
+
+  <!-- spans points + grade -->
+  <div class="header-points">Laajuus: (0) 15 / 0 - 30 op</div>
+</div>
+
+<div class="section-content">
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc7510')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC7510 Kyberturvallisuusharjoitusten perusteet</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc7520')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC7520 Kyberturvallisuusharjoituksen suunnittelu</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc7530')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC7530 Kyberturvallisuusharjoitus</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+</div>
+
+<div class="section-header">
+  <div></div>
+  <div>SOVELLUSKEHITYS</div>
+
+  <!-- spans points + grade -->
+  <div class="header-points">Laajuus: (0) 30 / 0 - 30 op</div>
+</div>
+
+<div class="section-content">
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc8410')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC8410 Web-visualisointi</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc8420')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC8420 Web-käyttöliittymien ohjelmointi</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc8430')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC8430 Web-palvelinohjelmointi sovelluskehyksellä</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc8440')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC8440 Olio-ohjelmointi</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc8450')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC8450 Mobiilisovelluskehitys</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttc8460')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTC8460 Android-sovelluskehitys</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+</div>
+
+<div class="section-header">
+  <div></div>
+  <div>TUTKIMUKSELLINEN KEHITTÄMISTOIMINTA</div>
+
+  <!-- spans points + grade -->
+  <div class="header-points">Laajuus: (0) 20 / 20 op</div>
+</div>
+
+<div class="section-content">
+
+<div class="row mandatory new"
+     onclick="openCourse('zzpp0620')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">ZZPP0620 Kehittämis- ja tutkimustoiminta</div>
+
+  <div class="points">5 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('zz00bl91')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">ZZ00BL91 Opinnäytetyön suunnittelu, AMK</div>
+
+  <div class="points">3 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('zz00bl97')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">ZZ00BL97 Opinnäytetyön kirjoittaminen, AMK</div>
+
+  <div class="points">2 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('zz00bl92')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">ZZ00BL92 Opinnäytetyön toteutus, AMK</div>
+
+  <div class="points">6 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('zz00bl93')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">ZZ00BL93 Opinnäytetyön raportointi ja arviointi, AMK</div>
+
+  <div class="points">4 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('zzoa0220')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">ZZOA0220 Kypsyysnäyte, AMK</div>
+
+  <div class="points">0 op</div>
+
+  <div class="grade"></div>
+
+</div>
+</div>
+
+<div class="section-header">
+  <div></div>
+  <div>HARJOITTELU</div>
+
+  <!-- spans points + grade -->
+  <div class="header-points">Laajuus: (0) 60 / 30 - 60 op</div>
+</div>
+
+<div class="section-content">
+
+<div class="row mandatory new"
+     onclick="openCourse('ttha0100')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTHA0100 Harjoittelu</div>
+
+  <div class="points">30 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttha0110')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTHA0110 Täydentävä harjoittelu</div>
+
+  <div class="points">0–15 op</div>
+
+  <div class="grade"></div>
+
+</div>
+
+<div class="row mandatory new"
+     onclick="openCourse('ttha0120')">
+
+  <div class="icons">
+    <span class="req"></span>
+    <span class="status"></span>
+  </div>
+
+  <div class="name">TTHA0120 Syventävä ammatillinen harjoittelu</div>
+
+  <div class="points">0–15 op</div>
+
+  <div class="grade"></div>
+
+</div>
+</div>
+
+<div class="section-header">
+  <div></div>
+  <div>VAPAASTI VALITTAVAT OPINNOT</div>
+
+  <!-- spans points + grade -->
+  <div class="header-points">Laajuus: (0) 27 -28 / 10 op</div>
+</div>
+
+<div class="section-header">
+  <div></div>
+  <div>VAPAASTI VALITTAVAT AMMATIAINEOPINNOT	</div>
+
+  <!-- spans points + grade -->
+  <div class="header-points">Laajuus: (0) 16 - 25 / 0 - 40 op</div>
+</div>
+
+<div class="section-header">
+  <div></div>
+  <div>HOPSIN ULKOPUOLISET OPINNOT</div>
+
+  <!-- spans points + grade -->
+  <div class="header-points">Laajuus: (0) 0 op</div>
+</div>
+
+    </div>
+
+  </div>
+
+
+<div id="coursePopup" class="popup-overlay">
+
+  <div class="popup">
+
+    <div class="popup-header">
+      <span id="courseTitle"></span>
+      <span class="close" onclick="closeCourse()">×</span>
+    </div>
+
+    <div class="popup-content">
+
+      <p><strong>Opetuskieli:</strong> <span id="courseLang"></span></p>
+
+		<p><strong>Tavoitteet:</strong></p>
+      	<p id="courseGoals"></p>
+
+      <p><strong>Sisältö:</strong></p>
+      <p id="courseContent"></p>
+
+		<p><strong>Esitietovaatimukset:</strong></p>
+		<p id="courseEsitieto"></p>
+
+      <button onclick="closeCourse()">Sulje</button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<div id="popup" class="popup-overlay">
+
+  <div class="popup">
+
+    <div class="popup-header">
+      <span>Ilmoitukset</span>
+      <span class="close" onclick="closePopup()">×</span>
+    </div>
+
+    <div class="popup-content">
+      <div class="message">
+        ℹ no-new-messages
+      </div>
+
+      <div class="popup-footer">
+        <a href="#">Näytä kaikki ilmoitukset »</a>
+        <button onclick="closePopup()">Sulje</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

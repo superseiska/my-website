@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>Peppi</title>
+<script>
+function goToFirst(menuId){
+  const menu = document.getElementById(menuId);
+  const firstLink = menu.querySelector("a");
+  window.location.href = firstLink.href;
+}
+</script>
+
+<script>
+function showTab(tabId){
+
+  // remove active from all buttons
+  document.querySelectorAll(".tab").forEach(btn=>{
+    btn.classList.remove("active");
+  });
+
+  // hide all content
+  document.querySelectorAll(".tab-content").forEach(c=>{
+    c.classList.remove("active");
+  });
+
+  // show selected
+  document.getElementById(tabId).classList.add("active");
+
+  // activate clicked button
+  event.target.classList.add("active");
+}
+</script>
+
+<script>
+function openPopup(){
+  document.getElementById("popup").style.display = "flex";
+}
+
+function closePopup(){
+  document.getElementById("popup").style.display = "none";
+}
+</script>
+</head>
+
+<body>
+
+<div class="topnav">
+	<div class="nav-left">
+		
+	<div class="hattutausta">
+ 		<i class="fa fa-graduation-cap" style="font-size: 30px;color: white;"></i>
+	</div>
+
+  <a href="index.html" style="gap: 6px; display: flex;align-items: center;"><i class="fa fa-home active" style="font-size: 20px;color: #3b56a3;"></i><span>ETUSIVU</span></a>
+
+  <div class="dropdown">
+    <button class="dropbtn" onclick="goToFirst('opinnot')"><i class="fa fa-cube " id="icon"style="font-size: 18px;"></i><span>OPINTONI</span><I class="fa fa-caret-down"></I></button>
+    <div class="dropdown-content" id="opinnot">
+      <a href="hops.html">Opintosuunnittelu (eHOPS)</a>
+      <a href="#">Opintosuoritukset</a>
+      <a href="ilmoitus.html">Ilmoittautuminen lukuvuodelle</a>
+      <a href="https://opetussuunnitelmat.peppi.jamk.fi/" target="_blank">Opetussuunnitelmat</a>
+      <a href="https://opintohaku.jamk.fi/" target="_blank">Opintohaku</a>
+      <a href="palaute.html">Opintojaksopalaute</a>
+    </div>
+  </div>
+
+  <div class="dropdown">
+    <button class="dropbtn" onclick="goToFirst('kalenteri')"><i class="fa fa-calendar" id="icon" style="font-size: 18px;"></i> <span>KALENTERI</span><I class="fa fa-caret-down"></I></button>
+    <div class="dropdown-content" id="kalenteri">
+        <a href="varaus.html">Tilavaraukset</a>
+        <a href="tapaamist.html">Tapaamisajat</a>
+        <a href="asetukset.html">Asetukset</a>
+    </div>
+  </div>
+    <div class="dropdown"onclick="goToFirst('asiointi')">
+    <button class="dropbtn" id="asiointi"><I class="fa fa-download " id="icon" style="font-size: 18px;"></I><span>SÄHKÖINEN ASIOINTI</span><I class="fa fa-caret-down"></I></button>
+    <div class="dropdown-content">
+        <a href="atomi.html">Atomi</a>
+        <a href="https://www.jamk.fi/en/for-students/online-services" target="_blank">Sähköinen asiointi</a>
+    </div>
+  </div>
+    <div class="dropdown" onclick="goToFirst('eahot')">
+    <button class="dropbtn" id="eahot"><span>EAHOT HYVÄKSILUKEMINEN</span><I class="fa fa-caret-down"></I></button>
+    <div class="dropdown-content">
+        <a href="luku.html">eAHOT-hyväksilukeminen</a>
+        <a href="lukupankki.html">Hyväksilukupankki</a>
+        <a href="liitepankki.html">Liitepankki</a>
+    </div>
+    </div>
+<a href="https://help.jamk.fi/peppi/fi/" target="_blank" style="gap: 6px; display: flex;align-items: center;"><i class="fa fa-book " id="icon" style="font-size: 18px;"></i><span>OHJEET</span></a>
+
+
+
+</div>
+<div class="nav-right">
+  <i class="fa fa-bell" onclick="openPopup()"></i>
+
+  <div class="dropdown">
+    <button class="dropbtn" >FI<I class="fa fa-caret-down"></I></button>
+    <div class="dropdown-content" style="gap: 6px;">
+        <a href="#"><i class="fa fa-language" id="icon"></i><span>In English</span></a>
+    </div>
+  </div>
+<img class="pfp" src="avatar.png" alt="Sisu Tiihonen" style="max-height: 30px;">
+  <div class="dropdown">
+    <button class="dropbtn" >Sisu Tiihonen<I class="fa fa-caret-down"></I></button>
+    <div class="dropdown-content" style="gap: 6px;">
+        <a href="#"><i class="fa fa-sign-out"></i><span>Kirjaudu Ulos</span></a>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="dashboard">
+
+<div class="kortti">
+  <div class="card-header">
+    <i class="fa fa-graduation-cap"></i>
+    <span>Opiskeluoikeuden tiedot</span>
+  </div>
+    <div class="card-content">
+
+    <div class="left-column">
+      <p>Sisu Tiihonen 2209446</p>
+      <p>
+        Tieto- ja viestintätekniikan tutkinto-ohjelma (AMK)<br>
+        AMK-tutkintoon johtava koulutus (päiväopetus)
+      </p>
+
+      <div class="credits">
+        <div class="circle"></div>
+        <div>
+          <h2>39 op</h2>
+          <span>(240 op)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-column">
+      <p>LÄSNÄ, SYKSY 01.08.2025 – 31.12.2025</p>
+      <p>LÄSNÄ, KEVÄT 01.01.2026 – 31.07.2026</p>
+
+
+      <p class="time">
+        Opiskeluoikeusaika 22.08.2022 – 31.07.2028
+      </p>
+    </div>
+
+  </div>
+
+	</div>
+<div class="card">
+
+  <h3>Tavoiteseuranta</h3>
+
+  <!-- buttons -->
+  <div class="tabs">
+    <button class="tab active" onclick="showTab('graph')">Graafi</button>
+    <button class="tab" onclick="showTab('table')">Taulukko</button>
+  </div>
+
+  <!-- GRAPH -->
+  <div id="graph" class="tab-content active">
+    <img src="graafi.png" alt="graph" style="width:100%;">
+  </div>
+
+  <!-- TABLE -->
+  <div id="table" class="tab-content">
+    <table>
+      <tr>
+        <th>Lukukausi</th>
+        <th>Suoritetut</th>
+        <th>Ilmoittautumiset</th>
+        <th>Oma tavoite</th>
+        <th>Koulun tavoite</th>
+      </tr>
+      <tr>
+        <td>Kevät 2023</td>
+        <td>0</td>
+        <td>0</td>
+        <td>23</td>
+        <td>30</td>
+      </tr>
+	      <tr>
+        <td>Syksy 2023</td>
+        <td>8</td>
+        <td>21</td>
+        <td>24</td>
+        <td>30</td>
+      </tr>
+	  	      <tr>
+        <td>Kevät 2024</td>
+        <td>0</td>
+        <td>20</td>
+        <td>22</td>
+        <td>30</td>
+      </tr>
+	     <td>Syksy 2024</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>30</td>
+      </tr>
+	<td>Kevät 2025</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>30</td>
+      </tr>
+		 <td>Syksy 2025</td>
+        <td>21</td>
+        <td>21</td>
+        <td>25</td>
+        <td>30</td>
+      </tr>
+	  	<td>Kevät 2026</td>
+        <td>0</td>
+        <td>35</td>
+        <td>35</td>
+        <td>30</td>
+      </tr>
+	  	<td>Syksy 2026</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>30</td>
+      </tr>
+      <!-- ad
+      <!-- add more rows -->
+    </table>
+  </div>
+
+</div>
+</div>
+
+<div class="pakki">
+	<H1>Pakki - Opiskelijan työpöytä</H1>
+	<p>Tervetuloa käyttämään opiskelijan työpöytäpalvelua. Opiskelijan sähköiseltä työpöydältä löytyy tällä hetkellä palveluja, joiden avulla voit seurata opintojesi edistymistä reaaliaikaisesti. Palvelut on suunniteltu siten, että ne toimivat hyvin myös mobiilikäyttäjälle.</p>
+</div>
+
+<div class="link-grid">
+
+  <a href="#" class="grid-item">
+    <div class="icon"><i class="fa fa-cube"></i></div>
+    <h3>HOPS</h3>
+    <p>HOPS on henkilökohtainen opintosuunnitelmasi. Suunnittele, ajoita ja muokkaa opintojasi yhdessä ohjaajan kanssa</p>
+  </a>
+
+  <a href="#" class="grid-item">
+    <div class="icon"><i class="fa fa-list"></i></div>
+    <h3>Suoritustote</h3>
+    <p>Palvelussa näet suorittamasi opinnot, ryhmäsi opetussuunnitelman opinnot ja hylätyt suoritukset.</p>
+  </a>
+
+  <a href="#" class="grid-item">
+    <div class="icon"><i class="fa fa-comments"></i></div>
+    <h3>Opintojaksopalaute</h3>
+    <p>Anna palautetta opintojaksoista opettajalle.</p>
+  </a>
+
+  <a href="#" class="grid-item">
+    <div class="icon"><i class="fa fa-calendar"></i></div>
+    <h3>Tilavaraukset</h3>
+    <p>Tarkastele opettajien, toteutusten, opiskelijaryhmien sekä tilojen varauksia kalenterissa. Varaa tiloja.</p>
+  </a>
+
+    <a href="#" class="grid-item">
+    <div class="icon"><i class="fa fa-list-alt"></i></div>
+    <h3>Lukkarikone</h3>
+    <p>Suunnittele omaa lukujärjestystäsi</p>
+  </a>
+
+      <a href="#" class="grid-item">
+    <div class="icon"><i class="fa fa-file-o"></i></div>
+    <h3>Viestit ja sopimukset</h3>
+    <p>Palvelussa näet kaikki viestit ja sopimukset ja lähetät uusia viestejä.</p>
+  </a>
+
+        <a href="#" class="grid-item">
+    <div class="icon"><i class="fa fa-file-o"></i></div>
+    <h3>Atomi</h3>
+    <p>Palvelussa voit tilata ja ladata opintoihin liittyviä dokumentteja.</p>
+  </a>
+
+          <a href="#" class="grid-item">
+    <div class="icon"><i class="fa fa-file-o"></i></div>
+    <h3>Tapaamisajat</h3>
+    <p>Varaa tapaamisaika opettajatutorillesi tai muulle taholle.</p>
+  </a>
+
+  
+
+  <!-- add more items the same way -->
+
+</div>
+
+<div id="popup" class="popup-overlay">
+
+  <div class="popup">
+
+    <div class="popup-header">
+      <span>Ilmoitukset</span>
+      <span class="close" onclick="closePopup()">×</span>
+    </div>
+
+    <div class="popup-content">
+      <div class="message">
+        ℹ no-new-messages
+      </div>
+
+      <div class="popup-footer">
+        <a href="#">Näytä kaikki ilmoitukset »</a>
+        <button onclick="closePopup()">Sulje</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>Peppi</title>
+<script>
+function goToFirst(menuId){
+  const menu = document.getElementById(menuId);
+  const firstLink = menu.querySelector("a");
+  window.location.href = firstLink.href;
+}
+</script>
+
+<script>
+function showTab(tabId){
+
+  // remove active from all buttons
+  document.querySelectorAll(".tab").forEach(btn=>{
+    btn.classList.remove("active");
+  });
+
+  // hide all content
+  document.querySelectorAll(".tab-content").forEach(c=>{
+    c.classList.remove("active");
+  });
+
+  // show selected
+  document.getElementById(tabId).classList.add("active");
+
+  // activate clicked button
+  event.target.classList.add("active");
+}
+</script>
+
+<script>
+function openPopup(){
+  document.getElementById("popup").style.display = "flex";
+}
+
+function closePopup(){
+  document.getElementById("popup").style.display = "none";
+}
+</script>
+</head>
+
+<body style="background-image: url('lukupankki.png');background-repeat: no-repeat;">
+
+<div class="topnav">
+	<div class="nav-left">
+		
+	<div class="hattutausta">
+ 		<i class="fa fa-graduation-cap" style="font-size: 30px;color: white;"></i>
+	</div>
+
+  <a href="index.html" style="gap: 6px; display: flex;align-items: center;"><i class="fa fa-home active" style="font-size: 20px;color: #3b56a3;"></i><span>ETUSIVU</span></a>
+
+  <div class="dropdown">
+    <button class="dropbtn" onclick="goToFirst('opinnot')"><i class="fa fa-cube " id="icon"style="font-size: 18px;"></i><span>OPINTONI</span><I class="fa fa-caret-down"></I></button>
+    <div class="dropdown-content" id="opinnot">
+      <a href="hops.html">Opintosuunnittelu (eHOPS)</a>
+      <a href="#">Opintosuoritukset</a>
+      <a href="ilmoitus.html">Ilmoittautuminen lukuvuodelle</a>
+      <a href="https://opetussuunnitelmat.peppi.jamk.fi/" target="_blank">Opetussuunnitelmat</a>
+      <a href="https://opintohaku.jamk.fi/" target="_blank">Opintohaku</a>
+      <a href="palaute.html">Opintojaksopalaute</a>
+    </div>
+  </div>
+
+  <div class="dropdown">
+    <button class="dropbtn" onclick="goToFirst('kalenteri')"><i class="fa fa-calendar" id="icon" style="font-size: 18px;"></i> <span>KALENTERI</span><I class="fa fa-caret-down"></I></button>
+    <div class="dropdown-content" id="kalenteri">
+        <a href="varaus.html">Tilavaraukset</a>
+        <a href="tapaamist.html">Tapaamisajat</a>
+        <a href="asetukset.html">Asetukset</a>
+    </div>
+  </div>
+    <div class="dropdown"onclick="goToFirst('asiointi')">
+    <button class="dropbtn" id="asiointi"><I class="fa fa-download " id="icon" style="font-size: 18px;"></I><span>SÄHKÖINEN ASIOINTI</span><I class="fa fa-caret-down"></I></button>
+    <div class="dropdown-content">
+        <a href="atomi.html">Atomi</a>
+        <a href="https://www.jamk.fi/en/for-students/online-services " target="_blank">Sähköinen asiointi</a>
+    </div>
+  </div>
+    <div class="dropdown" onclick="goToFirst('eahot')">
+    <button class="dropbtn" id="eahot"><span>EAHOT HYVÄKSILUKEMINEN</span><I class="fa fa-caret-down"></I></button>
+    <div class="dropdown-content">
+        <a href="luku.html">eAHOT-hyväksilukeminen</a>
+        <a href="lukupankki.html">Hyväksilukupankki</a>
+        <a href="liitepankki.html">Liitepankki</a>
+    </div>
+    </div>
+<a href="https://help.jamk.fi/peppi/fi/" target="_blank" style="gap: 6px; display: flex;align-items: center;"><i class="fa fa-book " id="icon" style="font-size: 18px;"></i><span>OHJEET</span></a>
+
+
+
+</div>
+<div class="nav-right">
+  <i class="fa fa-bell" onclick="openPopup()"></i>
+
+  <div class="dropdown">
+    <button class="dropbtn" >FI<I class="fa fa-caret-down"></I></button>
+    <div class="dropdown-content" style="gap: 6px;">
+        <a href="#"><i class="fa fa-language" id="icon"></i><span>In English</span></a>
+    </div>
+  </div>
+<img class="pfp" src="avatar.png" alt="Sisu Tiihonen" style="max-height: 30px;">
+  <div class="dropdown">
+    <button class="dropbtn" >Sisu Tiihonen<I class="fa fa-caret-down"></I></button>
+    <div class="dropdown-content" style="gap: 6px;">
+        <a href="#"><i class="fa fa-sign-out"></i><span>Kirjaudu Ulos</span></a>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+<div id="popup" class="popup-overlay">
+
+  <div class="popup">
+
+    <div class="popup-header">
+      <span>Ilmoitukset</span>
+      <span class="close" onclick="closePopup()">×</span>
+    </div>
+
+    <div class="popup-content">
+      <div class="message">
+        ℹ no-new-messages
+      </div>
+
+      <div class="popup-footer">
+        <a href="#">Näytä kaikki ilmoitukset »</a>
+        <button onclick="closePopup()">Sulje</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
